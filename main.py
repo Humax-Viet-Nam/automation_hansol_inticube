@@ -1,12 +1,9 @@
-import argparse
 import asyncio
 from aiohttp import web
 import random
 
-from helper import read_file_content_as_bytes
 
 # # Define the file content you want to match
-FILE_CONTENT_PATH = "resource/file_content.txt"
 expected_content = b""
 
 # Initialize a global counter
@@ -57,8 +54,8 @@ async def handle_get(request):
     try:
         return web.json_response(
             {
-                "actual_total_request": request_count,
-                "actual_request": number_request_not_correct_content,
+                "total_request_received": request_count,
+                "total_request_not_match_content": number_request_not_correct_content,
                 "expected_total_request": expected_total_request,
                 "number_response_400": max_400_responses
             }
@@ -87,20 +84,14 @@ async def handle_put_reset(request):
         )
         return web.Response(status=200, text=f"Update success.")
     except Exception as e:
-        return web.Response(status=500, text=f"Internal Server Error: {str(e)}")
+        return web.Response(status=500, text=f"Internal Server Error: {str(e)}.")
 
 
 async def handle_put_update_expected_file_content(request):
     global expected_content
     try:
-        with open(FILE_CONTENT_PATH, 'wb') as f:
-            while True:
-                chunk = await request.content.read(1024)
-                if not chunk:
-                    break
-                f.write(chunk)
-        expected_content = read_file_content_as_bytes(FILE_CONTENT_PATH)
-        print("Update expected file content success.")
+        expected_content = await request.read()
+        print(f"Set expected file content success is: {expected_content}")
         return web.Response(status=200, text=f"Update file content success.")
     except Exception as e:
         return web.Response(status=500, text=f"Internal Server Error: {str(e)}")
