@@ -1,0 +1,14 @@
+{
+  "test_1": {
+    "expected_total_request": 10000,
+    "percent_response_error": 20
+  },
+  "test_2": {
+    "expected_total_request": 10000,
+    "percent_response_error": 0
+  },
+  "test_3": {
+    "expected_total_request": 10000,
+    "percent_response_error": 100
+  }
+}
