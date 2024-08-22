@@ -10,8 +10,6 @@ services:
       - "10801:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_2:
@@ -23,8 +21,6 @@ services:
       - "10802:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_3:
@@ -36,8 +32,6 @@ services:
       - "10803:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_4:
@@ -49,8 +43,6 @@ services:
       - "10804:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_5:
@@ -62,8 +54,6 @@ services:
       - "10805:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_6:
@@ -75,8 +65,6 @@ services:
       - "10806:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_7:
@@ -88,8 +76,6 @@ services:
       - "10807:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_8:
@@ -101,8 +87,6 @@ services:
       - "10808:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_9:
@@ -114,8 +98,6 @@ services:
       - "10809:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_10:
@@ -127,8 +109,6 @@ services:
       - "10810:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_11:
@@ -140,8 +120,6 @@ services:
       - "10811:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_12:
@@ -153,8 +131,6 @@ services:
       - "10812:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_13:
@@ -166,8 +142,6 @@ services:
       - "10813:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_14:
@@ -179,8 +153,6 @@ services:
       - "10814:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_15:
@@ -192,8 +164,6 @@ services:
       - "10815:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_16:
@@ -205,8 +175,6 @@ services:
       - "10816:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_17:
@@ -218,8 +186,6 @@ services:
       - "10817:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_18:
@@ -231,8 +197,6 @@ services:
       - "10818:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_19:
@@ -244,8 +208,6 @@ services:
       - "10819:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_20:
@@ -257,8 +219,6 @@ services:
       - "10820:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_21:
@@ -270,8 +230,6 @@ services:
       - "10821:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_22:
@@ -283,8 +241,6 @@ services:
       - "10822:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_23:
@@ -296,8 +252,6 @@ services:
       - "10823:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_24:
@@ -309,8 +263,6 @@ services:
       - "10824:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_25:
@@ -322,8 +274,6 @@ services:
       - "10825:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_26:
@@ -335,8 +285,6 @@ services:
       - "10826:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_27:
@@ -348,8 +296,6 @@ services:
       - "10827:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_28:
@@ -361,8 +307,6 @@ services:
       - "10828:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_29:
@@ -374,8 +318,6 @@ services:
       - "10829:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_30:
@@ -387,8 +329,6 @@ services:
       - "10830:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_31:
@@ -400,8 +340,6 @@ services:
       - "10831:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_32:
@@ -413,8 +351,6 @@ services:
       - "10832:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_33:
@@ -426,8 +362,6 @@ services:
       - "10833:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_34:
@@ -439,8 +373,6 @@ services:
       - "10834:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_35:
@@ -452,8 +384,6 @@ services:
       - "10835:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_36:
@@ -465,8 +395,6 @@ services:
       - "10836:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_37:
@@ -478,8 +406,6 @@ services:
       - "10837:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_38:
@@ -491,8 +417,6 @@ services:
       - "10838:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_39:
@@ -504,8 +428,6 @@ services:
       - "10839:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_40:
@@ -517,8 +439,6 @@ services:
       - "10840:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_41:
@@ -530,8 +450,6 @@ services:
       - "10841:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_42:
@@ -543,8 +461,6 @@ services:
       - "10842:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_43:
@@ -556,8 +472,6 @@ services:
       - "10843:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_44:
@@ -569,8 +483,6 @@ services:
       - "10844:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_45:
@@ -582,8 +494,6 @@ services:
       - "10845:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_46:
@@ -595,8 +505,6 @@ services:
       - "10846:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_47:
@@ -608,8 +516,6 @@ services:
       - "10847:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_48:
@@ -621,8 +527,6 @@ services:
       - "10848:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_49:
@@ -634,8 +538,6 @@ services:
       - "10849:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_50:
@@ -647,8 +549,6 @@ services:
       - "10850:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_51:
@@ -660,8 +560,6 @@ services:
       - "10851:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_52:
@@ -673,8 +571,6 @@ services:
       - "10852:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_53:
@@ -686,8 +582,6 @@ services:
       - "10853:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_54:
@@ -699,8 +593,6 @@ services:
       - "10854:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_55:
@@ -712,8 +604,6 @@ services:
       - "10855:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_56:
@@ -725,8 +615,6 @@ services:
       - "10856:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_57:
@@ -738,8 +626,6 @@ services:
       - "10857:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_58:
@@ -751,8 +637,6 @@ services:
       - "10858:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_59:
@@ -764,8 +648,6 @@ services:
       - "10859:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_60:
@@ -777,8 +659,6 @@ services:
       - "10860:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_61:
@@ -790,8 +670,6 @@ services:
       - "10861:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_62:
@@ -803,8 +681,6 @@ services:
       - "10862:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_63:
@@ -816,8 +692,6 @@ services:
       - "10863:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_64:
@@ -829,8 +703,6 @@ services:
       - "10864:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_65:
@@ -842,8 +714,6 @@ services:
       - "10865:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_66:
@@ -855,8 +725,6 @@ services:
       - "10866:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_67:
@@ -868,8 +736,6 @@ services:
       - "10867:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_68:
@@ -881,8 +747,6 @@ services:
       - "10868:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_69:
@@ -894,8 +758,6 @@ services:
       - "10869:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_70:
@@ -907,8 +769,6 @@ services:
       - "10870:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_71:
@@ -920,8 +780,6 @@ services:
       - "10871:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_72:
@@ -933,8 +791,6 @@ services:
       - "10872:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_73:
@@ -946,8 +802,6 @@ services:
       - "10873:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_74:
@@ -959,8 +813,6 @@ services:
       - "10874:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_75:
@@ -972,8 +824,6 @@ services:
       - "10875:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_76:
@@ -985,8 +835,6 @@ services:
       - "10876:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_77:
@@ -998,8 +846,6 @@ services:
       - "10877:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_78:
@@ -1011,8 +857,6 @@ services:
       - "10878:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_79:
@@ -1024,8 +868,6 @@ services:
       - "10879:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_80:
@@ -1037,8 +879,6 @@ services:
       - "10880:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_81:
@@ -1050,8 +890,6 @@ services:
       - "10881:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_82:
@@ -1063,8 +901,6 @@ services:
       - "10882:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_83:
@@ -1076,8 +912,6 @@ services:
       - "10883:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_84:
@@ -1089,8 +923,6 @@ services:
       - "10884:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_85:
@@ -1102,8 +934,6 @@ services:
       - "10885:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_86:
@@ -1115,8 +945,6 @@ services:
       - "10886:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_87:
@@ -1128,8 +956,6 @@ services:
       - "10887:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_88:
@@ -1141,8 +967,6 @@ services:
       - "10888:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_89:
@@ -1154,8 +978,6 @@ services:
       - "10889:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_90:
@@ -1167,8 +989,6 @@ services:
       - "10890:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_91:
@@ -1180,8 +1000,6 @@ services:
       - "10891:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_92:
@@ -1193,8 +1011,6 @@ services:
       - "10892:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_93:
@@ -1206,8 +1022,6 @@ services:
       - "10893:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_94:
@@ -1219,8 +1033,6 @@ services:
       - "10894:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_95:
@@ -1232,8 +1044,6 @@ services:
       - "10895:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_96:
@@ -1245,8 +1055,6 @@ services:
       - "10896:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_97:
@@ -1258,8 +1066,6 @@ services:
       - "10897:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_98:
@@ -1271,8 +1077,6 @@ services:
       - "10898:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_99:
@@ -1284,8 +1088,6 @@ services:
       - "10899:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 
   web_100:
@@ -1297,7 +1099,5 @@ services:
       - "10900:8080"
     environment:
       - PORT=8080
-    volumes:
-      - .:/app
     restart: always
 

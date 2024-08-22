@@ -20,8 +20,6 @@ for i in range(num_services):
     docker_compose_content += f'      - "{port}:8080"\n'
     docker_compose_content += f'    environment:\n'
     docker_compose_content += f'      - PORT=8080\n'
-    docker_compose_content += f'    volumes:\n'
-    docker_compose_content += f'      - .:/app\n'
     docker_compose_content += f'    restart: always\n\n'
 
 # Write to docker-compose.yml
