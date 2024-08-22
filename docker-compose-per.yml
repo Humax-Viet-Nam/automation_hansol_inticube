@@ -1,0 +1,1303 @@
+version: '3.8'
+
+services:
+  web_1:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10801:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_2:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10802:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_3:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10803:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_4:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10804:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_5:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10805:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_6:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10806:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_7:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10807:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_8:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10808:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_9:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10809:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_10:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10810:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_11:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10811:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_12:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10812:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_13:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10813:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_14:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10814:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_15:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10815:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_16:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10816:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_17:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10817:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_18:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10818:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_19:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10819:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_20:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10820:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_21:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10821:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_22:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10822:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_23:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10823:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_24:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10824:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_25:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10825:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_26:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10826:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_27:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10827:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_28:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10828:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_29:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10829:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_30:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10830:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_31:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10831:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_32:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10832:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_33:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10833:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_34:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10834:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_35:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10835:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_36:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10836:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_37:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10837:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_38:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10838:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_39:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10839:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_40:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10840:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_41:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10841:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_42:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10842:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_43:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10843:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_44:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10844:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_45:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10845:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_46:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10846:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_47:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10847:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_48:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10848:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_49:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10849:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_50:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10850:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_51:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10851:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_52:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10852:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_53:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10853:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_54:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10854:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_55:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10855:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_56:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10856:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_57:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10857:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_58:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10858:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_59:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10859:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_60:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10860:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_61:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10861:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_62:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10862:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_63:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10863:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_64:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10864:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_65:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10865:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_66:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10866:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_67:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10867:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_68:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10868:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_69:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10869:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_70:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10870:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_71:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10871:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_72:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10872:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_73:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10873:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_74:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10874:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_75:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10875:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_76:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10876:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_77:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10877:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_78:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10878:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_79:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10879:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_80:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10880:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_81:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10881:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_82:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10882:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_83:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10883:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_84:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10884:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_85:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10885:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_86:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10886:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_87:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10887:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_88:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10888:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_89:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10889:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_90:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10890:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_91:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10891:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_92:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10892:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_93:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10893:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_94:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10894:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_95:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10895:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_96:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10896:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_97:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10897:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_98:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10898:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_99:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10899:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
+  web_100:
+    image: 192.168.100.29:5000/hansol/initicube:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "10900:8080"
+    environment:
+      - PORT=8080
+    volumes:
+      - .:/app
+    restart: always
+
