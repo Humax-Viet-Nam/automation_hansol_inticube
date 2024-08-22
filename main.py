@@ -225,7 +225,7 @@ async def handle_put_update_expected_file_content(request):
 async def create_app():
     app = web.Application()
     app.add_routes([
-        web.post('/file', handle_post),
+        web.post('/', handle_post),
         web.get('/stats', handle_get_stats),
         web.get('/file_content', handle_get_file_content),
         web.put('/reset_stats', handle_put_reset),

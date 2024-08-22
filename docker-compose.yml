@@ -13,3 +13,8 @@ services:
     volumes:
       - .:/app
     restart: always
+
+  ubuntu:
+    build:
+      context: .
+      dockerfile: ./Dockerfile_ubuntu
