@@ -1,2 +1,4 @@
 aiohttp==3.10.3
 aiohttp_swagger==1.0.16
+aiofiles
+requests

@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# Check if a configuration file is provided as a parameter
+if [ "$#" -ne 1 ]; then
+  echo "Usage: $0 <config_file>"
+  exit 1
+fi
+
+# Source the external configuration file passed as an argument
+source "$1"
+
+# Number of concurrent requests
+CONCURRENT_REQUESTS=5
+
+# Function to send a POST request
+send_post_request() {
+  curl -X POST -d "@$FILE_PATH" --header 'Content-Type: application/json' --header 'Accept: text/plain' "$URL"
+#  curl -X POST "$URL" -F "file=@$FILE_PATH"
+}
+
+# Export the function and variables to be used by xargs
+export -f send_post_request
+export URL FILE_PATH
+
+# Use xargs to run the requests concurrently
+seq $CONCURRENT_REQUESTS | xargs -n1 -P$CONCURRENT_REQUESTS bash -c 'send_post_request'
+
+echo "All requests completed."

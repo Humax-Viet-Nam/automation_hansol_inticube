@@ -1,0 +1,160 @@
+{
+	"info": {
+		"_postman_id": "0aa61617-1c98-4e81-af51-33fde1d88c22",
+		"name": "hansol_initicube",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7741684"
+	},
+	"item": [
+		{
+			"name": "send data to check",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "file",
+					"file": {
+						"src": "/D:/workspace/automation/hansol_inticube/resource/test_content.txt"
+					}
+				},
+				"url": {
+					"raw": "http://{{server_ip}}:{{server_port}}/file",
+					"protocol": "http",
+					"host": [
+						"{{server_ip}}"
+					],
+					"port": "{{server_port}}",
+					"path": [
+						"file"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get expected file content",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{server_ip}}:{{server_port}}/stats",
+					"protocol": "http",
+					"host": [
+						"{{server_ip}}"
+					],
+					"port": "{{server_port}}",
+					"path": [
+						"stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get current status",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{server_ip}}:{{server_port}}/stats",
+					"protocol": "http",
+					"host": [
+						"{{server_ip}}"
+					],
+					"port": "{{server_port}}",
+					"path": [
+						"stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update expected",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"total_request\": 100000,\r\n    \"failed_percent\": 20\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{server_ip}}:{{server_port}}/reset_stats",
+					"protocol": "http",
+					"host": [
+						"{{server_ip}}"
+					],
+					"port": "{{server_port}}",
+					"path": [
+						"reset_stats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update file content",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "file",
+					"file": {
+						"src": "/D:/workspace/automation/hansol_inticube/resource/test_file_content.txt"
+					}
+				},
+				"url": {
+					"raw": "http://{{server_ip}}:{{server_port}}/file_content",
+					"protocol": "http",
+					"host": [
+						"{{server_ip}}"
+					],
+					"port": "{{server_port}}",
+					"path": [
+						"file_content"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "server_ip",
+			"value": "192.168.100.247",
+			"type": "string"
+		},
+		{
+			"key": "server_port",
+			"value": "8080",
+			"type": "string"
+		}
+	]
+}
