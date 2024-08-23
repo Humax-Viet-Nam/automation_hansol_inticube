@@ -34,13 +34,12 @@ def main():
         set_stats(host, default_stats)
         set_expected_file_content(host, expected_content_file)
 
-    os.system("cd ./resource/hansol-app")
     for test_case_id, testcase_data in list_test_cases.items():
         try:
             list_file_log_before_run = get_list_file_at_folder(server_config['log_path'])
 
             timeout_duration = 10
-            command = (f"./httppostclient "
+            command = (f"cd ./resource/hansol-app && ls -al && ./httppostclient "
                        f"--host {list_hosts_file} "
                        f"--request {server_config['request_count']} "
                        f"--input {expected_content_file} "
