@@ -15,7 +15,7 @@ services:
     restart: always
 
   ubuntu:
-    image: 192.168.100.29:5000/hansol/initcube_test:1.0.3
+    image: 192.168.100.29:5000/hansol/initcube_test:1.0.4
     build:
       context: .
       dockerfile: ./Dockerfile.qatest
