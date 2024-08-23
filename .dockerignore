@@ -1,0 +1,26 @@
+__pycache__
+*/__pycache__
+
+*.log
+
+# Virtual environment
+.env
+.venv/
+venv/
+
+# PyCharm
+.idea
+
+# Docker
+docker-compose.yml
+docker-compose-per.yml
+Dockerfile
+Dockerfile.qatest
+.docker
+.dockerignore
+
+
+# Git
+.git
+.gitignore
+.gitattributes
