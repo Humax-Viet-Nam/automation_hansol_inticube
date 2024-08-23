@@ -39,7 +39,7 @@ def main():
             list_file_log_before_run = get_list_file_at_folder(server_config['log_path'])
 
             timeout_duration = 10
-            command = (f"./resource/hansol-app/httppostclient "
+            command = (f"./httppostclient "
                        f"--host {list_hosts_file} "
                        f"--request {server_config['request_count']} "
                        f"--input {expected_content_file} "

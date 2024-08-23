@@ -31,5 +31,6 @@ WORKDIR /app
 COPY requirements.txt /app/
 RUN pip3 install --no-cache-dir -r requirements.txt
 
+COPY . /app/
 # Set the default command to run on container start
 CMD ["bash", "-c", "tail -f /dev/null"]
