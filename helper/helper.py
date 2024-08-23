@@ -1,5 +1,6 @@
 import configparser
 import json
+import os
 
 
 def read_file_content_as_bytes(file_path):
@@ -17,7 +18,7 @@ def read_file_config(file_path):
     return file_data
 
 
-def read_json_file(file_path):
+def read_json_file(file_path) -> dict:
     with open(file_path, encoding='utf-8') as json_file:
         return json.load(json_file)
 
@@ -40,3 +41,24 @@ def read_file_as_text(file_path, encoding='utf-8'):
     except Exception as e:
         print(f"An error occurred while reading the file: {e}")
         return None
+
+
+def get_list_file_at_folder(folder_path, extension: str = ".log"):
+    """
+    Returns a list of files with the specified extension in the given folder.
+    if folder not exist return empty.
+    :param folder_path: Path to the folder where files are to be listed.
+    :param extension: The file extension to filter by. Default is ".log".
+    :return: A list of file paths with the specified extension.
+    """
+
+    if not os.path.isdir(folder_path):
+        print(f"{folder_path} is not a valid directory")
+        list_files_path = []
+    else:
+        list_files_path = [
+            os.path.join(folder_path, file) if not file.startswith(".") else file  # Exclude hidden files
+            for file in os.listdir(folder_path)
+            if file.endswith(extension)
+        ]
+    return list_files_path

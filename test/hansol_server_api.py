@@ -22,6 +22,26 @@ def get_stats(host: str) -> dict:
     return {}
 
 
+def get_log(host: str) -> dict:
+    url = f'http://{host}/stats'
+    try:
+        # todo: update content
+        response = requests.get(url)
+        response.raise_for_status()  # Raises an HTTPError for bad responses (4xx, 5xx)
+        return response.json()
+    except requests.exceptions.HTTPError as http_err:
+        print(f"HTTP error occurred: {http_err}")
+    except requests.exceptions.ConnectionError:
+        print(f"Failed to connect to {host}.")
+    except requests.exceptions.Timeout:
+        print("The request timed out.")
+    except requests.exceptions.RequestException as req_err:
+        print(f"An error occurred: {req_err}")
+    except json.JSONDecodeError:
+        print("Failed to parse JSON response.")
+    return {}
+
+
 def set_stats(host: str, expected_stats: dict) -> None:
     url = f'http://{host}/reset_stats'
     headers = {"Content-Type": "application/json"}
