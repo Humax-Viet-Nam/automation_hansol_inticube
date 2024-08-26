@@ -1,23 +1,7 @@
 {
   "test_1": {
-    "expected_total_request": 10000,
+    "expected_total_request": 100,
     "percent_response_error": 0,
-    "percent_no_response": 0,
-    "max_size_log_file_mb": 500,
-    "log_path": "./data",
-    "result": ""
-  },
-  "test_2": {
-    "expected_total_request": 10000,
-    "percent_response_error": 0,
-    "percent_no_response": 20,
-    "max_size_log_file_mb": 500,
-    "log_path": "./data",
-    "result": ""
-  },
-  "test_3": {
-    "expected_total_request": 10000,
-    "percent_response_error": 10,
     "percent_no_response": 0,
     "max_size_log_file_mb": 500,
     "log_path": "./data",

@@ -121,20 +121,21 @@ def main():
                 }
                 set_stats(host, expected_stats)
                 set_expected_file_content(host, expected_content_file)
-            # timeout_duration = 10
+            timeout_duration = 10
             command = (f"cd ./resource/hansol-app && ./httppostclient "
                        f"--host {list_hosts_file} "
                        f"--request {testcase_data['expected_total_request']} "
                        f"--input {expected_content_file} "
                        f"--log {testcase_data['log_path']}")
             os.system(command)
-            # time.sleep(timeout_duration)
+            time.sleep(timeout_duration)
 
             logger.info(f"Verify log for test case.")
             testcase_data['result'] += verify_log(testcase_data, list_file_log_before_run)
 
             logger.info(f"Verify stats for test case.")
             summary_stats = get_summary_stats()
+            testcase_data["actual_stats"] = summary_stats
             message_verify_total_rq = (
                 f"[{BOOL_TO_STAGE[summary_stats['total_request_received'] == testcase_data['expected_total_request']]}]"
                 f" Receive total {testcase_data['expected_total_request']} requests."
