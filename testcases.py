@@ -87,7 +87,8 @@ def get_summary_stats():
     )
     return {
         "total_request_received": total_request_received,
-        "number_request_not_correct_content": number_request_not_correct_content
+        "number_request_not_correct_content": number_request_not_correct_content,
+        "list_host_stats": list_host_stats
     }
 
 
@@ -121,6 +122,9 @@ def main():
                 }
                 set_stats(host, expected_stats)
                 set_expected_file_content(host, expected_content_file)
+                summary_stats = get_summary_stats()
+                logger.warning(summary_stats)
+
             timeout_duration = 10
             command = (f"cd ./resource/hansol-app && ./httppostclient "
                        f"--host {list_hosts_file} "
