@@ -76,14 +76,14 @@ def verify_log(testcase_data, list_file_log_before_run):
 
 def get_summary_stats():
     list_hosts = get_list_hosts()
-    list_host_stats = []
+    list_host_stats = {}
     for host in list_hosts:
-        list_host_stats.append(get_stats(host))
+        list_host_stats[host] = get_stats(host)
     total_request_received = sum(
-        [host_stat["request_count"] for host_stat in list_host_stats]
+        [host_stat["request_count"] for _, host_stat in list_host_stats.items()]
     )
     number_request_not_correct_content = sum(
-        [host_stat["number_request_not_correct_content"] for host_stat in list_host_stats]
+        [host_stat["number_request_not_correct_content"] for _, host_stat in list_host_stats.items()]
     )
     return {
         "total_request_received": total_request_received,
@@ -122,8 +122,8 @@ def main():
                 }
                 set_stats(host, expected_stats)
                 set_expected_file_content(host, expected_content_file)
-                summary_stats = get_summary_stats()
-                logger.warning(summary_stats)
+            summary_stats = get_summary_stats()
+            logger.warning(summary_stats)
 
             timeout_duration = 10
             command = (f"cd ./resource/hansol-app && ./httppostclient "
