@@ -122,6 +122,7 @@ def main():
                 }
                 set_stats(host, expected_stats)
                 set_expected_file_content(host, expected_content_file)
+                time.sleep(0.5)
             summary_stats = get_summary_stats()
             logger.warning(summary_stats)
 
@@ -139,6 +140,7 @@ def main():
 
             logger.info(f"Verify stats for test case.")
             summary_stats = get_summary_stats()
+            logger.warning(summary_stats)
             testcase_data["actual_stats"] = summary_stats
             message_verify_total_rq = (
                 f"[{BOOL_TO_STAGE[summary_stats['total_request_received'] == testcase_data['expected_total_request']]}]"
