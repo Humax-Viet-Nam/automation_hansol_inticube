@@ -23,6 +23,17 @@ def read_json_file(file_path) -> dict:
         return json.load(json_file)
 
 
+def write_json_to_file(json_data: dict, file_path, encoding='utf-8'):
+    try:
+        # Open the file in write mode
+        with open(file_path, 'w', encoding=encoding) as file:
+            # Write the JSON data to the file with formatting
+            json.dump(json_data, file, indent=4, sort_keys=True)
+        print(f"JSON data has been written to {file_path} successfully.")
+    except Exception as e:
+        print(f"An error occurred while writing JSON data to the file: {e}")
+
+
 def read_file_as_text(file_path, encoding='utf-8'):
     """
     Reads a text file with UTF-8 encoding and returns its content as a string.
@@ -51,9 +62,9 @@ def get_list_file_at_folder(folder_path, extension: str = ".log"):
     :param extension: The file extension to filter by. Default is ".log".
     :return: A list of file paths with the specified extension.
     """
-
-    if not os.path.isdir(folder_path):
-        print(f"{folder_path} is not a valid directory")
+    folder_path = os.path.abspath(folder_path)
+    if not os.path.exists(folder_path):
+        print(f"Folder {folder_path} is not existed.")
         list_files_path = []
     else:
         list_files_path = [

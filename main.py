@@ -111,6 +111,23 @@ async def handle_get_stats(request):
         return web.Response(status=500, text=messages.INTER_SERVER_ERROR.format(str_ex=str(e)))
 
 
+async def handle_get_log_response(request):
+    """
+    ---
+    description: Retrieve request statistics.
+    tags:
+    - GET
+    produces:
+    - application/json
+    responses:
+        "200":
+            description: Successful response with statistics.
+        "500":
+            description: Internal Server Error.
+    """
+    pass
+
+
 async def handle_get_file_content(request):
     """
     ---
@@ -226,6 +243,7 @@ async def create_app():
     app.add_routes([
         web.post('/', handle_post),
         web.get('/stats', handle_get_stats),
+        web.get('/log_response', handle_get_log_response),
         web.get('/file_content', handle_get_file_content),
         web.put('/reset_stats', handle_put_reset),
         web.put('/file_content', handle_put_update_expected_file_content)

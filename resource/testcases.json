@@ -1,32 +1,26 @@
 {
   "test_1": {
     "expected_total_request": 10000,
-    "percent_response_error": 20,
-    "percent_no_response": 20,
+    "percent_response_error": 0,
+    "percent_no_response": 0,
     "max_size_log_file_mb": 500,
-    "time_format": "yyyy-mm-dd hh:mm:ss",
-    "expected_file_log_name_format": "logfile_yyyymmdd_hhmmss.log",
-    "expected_file_content_format_no_response": "seq {count}  -  Send Time: {time_format}, Receive Time: {time_format}, Host Info: IP = {ip}, Port = {port}, Sent Message: {sent_message}",
-    "expected_file_content_format_has_response": "seq {count}  -  Send Time: {time_format}, Receive Time: {time_format}, Host Info: IP = {ip}, Port = {port}, Sent Message: {sent_message}, Received Message: {receive_message}"
+    "log_path": "./data",
+    "result": ""
   },
   "test_2": {
     "expected_total_request": 10000,
     "percent_response_error": 0,
     "percent_no_response": 20,
     "max_size_log_file_mb": 500,
-    "time_format": "yyyy-mm-dd hh:mm:ss",
-    "expected_file_log_name_format": "logfile_yyyymmdd_hhmmss.log",
-    "expected_file_content_format_no_response": "seq {count}  -  Send Time: {time_format}, Receive Time: {time_format}, Host Info: IP = {ip}, Port = {port}, Sent Message: {sent_message}",
-    "expected_file_content_format_has_response": "seq {count}  -  Send Time: {time_format}, Receive Time: {time_format}, Host Info: IP = {ip}, Port = {port}, Sent Message: {sent_message}, Received Message: {receive_message}"
+    "log_path": "./data",
+    "result": ""
   },
   "test_3": {
     "expected_total_request": 10000,
-    "percent_response_error": 100,
-    "percent_no_response": 20,
+    "percent_response_error": 10,
+    "percent_no_response": 0,
     "max_size_log_file_mb": 500,
-    "time_format": "yyyy-mm-dd hh:mm:ss",
-    "expected_file_log_name_format": "logfile_yyyymmdd_hhmmss.log",
-    "expected_file_content_format_no_response": "seq {count}  -  Send Time: {time_format}, Receive Time: {time_format}, Host Info: IP = {ip}, Port = {port}, Sent Message: {sent_message}",
-    "expected_file_content_format_has_response": "seq {count}  -  Send Time: {time_format}, Receive Time: {time_format}, Host Info: IP = {ip}, Port = {port}, Sent Message: {sent_message}, Received Message: {receive_message}"
+    "log_path": "./data",
+    "result": ""
   }
 }

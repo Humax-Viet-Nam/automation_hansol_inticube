@@ -1,0 +1,33 @@
+# Use the official CentOS image as the base image
+FROM centos:8
+
+# Update the package list and install basic packages
+RUN dnf -y update && dnf -y install \
+    curl \
+    wget \
+    vim \
+    git \
+    sudo \
+    ca-certificates \
+    && dnf clean all
+
+# Install Python and required development tools
+RUN dnf -y install \
+    python3 \
+    python3-pip \
+    make \
+    gcc \
+    openssl-devel \
+    libffi-devel \
+    python3-devel \
+    && dnf clean all
+
+# Set the working directory
+WORKDIR /app
+
+# Install any needed packages specified in requirements.txt
+COPY requirements.txt /app/
+RUN pip3 install --no-cache-dir -r requirements.txt
+
+# Set the default command to run on container start
+CMD ["bash", "-c", "tail -f /dev/null"]
