@@ -1,9 +1,9 @@
 import os
 import re
 import time
-
-from helper.helper import read_json_file, read_file_as_text, get_list_file_at_folder, write_json_to_file
-from helper.path_manage import testcases_file, list_hosts_file, expected_content_file
+from helper.helper import read_json_file, read_file_as_text, get_list_file_at_folder, write_json_to_file, \
+    extract_zip_file_to_folder, remove_folder_and_contents
+from helper.path_manage import testcases_file, test_data_folder, test_data_zip_file
 from test.hansol_server_api import set_stats, set_expected_file_content, get_stats, get_log
 import logging
 logging.basicConfig(level=logging.DEBUG)
@@ -14,9 +14,12 @@ BOOL_TO_STAGE = {
     True: "Passed"
 }
 
+host_file_name_temp = "{testcase_id}_hostfile.txt"
+message_file_name_temp = "{testcase_id}_messagefile.txt"
 
-def get_list_hosts() -> [str]:
-    file_hosts = read_file_as_text(list_hosts_file)
+
+def get_list_hosts(hosts_file_path) -> [str]:
+    file_hosts = read_file_as_text(hosts_file_path)
     list_host = [host.strip() for host in file_hosts.split('\n') if host]
     return list_host
 
@@ -74,8 +77,7 @@ def verify_log(testcase_data, list_file_log_before_run):
     return log_result
 
 
-def get_summary_stats():
-    list_hosts = get_list_hosts()
+def get_summary_stats(list_hosts):
     list_host_stats = {}
     for host in list_hosts:
         list_host_stats[host] = get_stats(host)
@@ -106,14 +108,39 @@ def verify_logfile_name(file_path):
         return False
 
 
-def main():
+def validate_test_data():
+    list_files_test_data = get_list_file_at_folder(test_data_folder, ".txt")
+    list_file_name_test_data = [os.path.basename(file) for file in list_files_test_data]
     list_test_cases = read_json_file(testcases_file)
-    list_hosts = get_list_hosts()
+    list_test_case_id = list_test_cases.keys()
+    list_test_data_missing = []
+    for testcase_id in list_test_case_id:
+        host_file = host_file_name_temp.format(testcase_id=testcase_id)
+        message_file = message_file_name_temp.format(testcase_id=testcase_id)
+        if host_file not in list_file_name_test_data:
+            list_test_data_missing.append(host_file)
+        if message_file not in list_file_name_test_data:
+            list_test_data_missing.append(message_file)
+    if len(list_test_data_missing) > 0:
+        raise ValueError(f"Missing testdata: {', '.join(list_test_data_missing)}")
 
-    for test_case_id, testcase_data in list_test_cases.items():
+
+def main():
+
+    remove_folder_and_contents(test_data_folder)
+    extract_zip_file_to_folder(test_data_zip_file, test_data_folder)
+    validate_test_data()
+    list_test_cases = read_json_file(testcases_file)
+
+    for testcase_id, testcase_data in list_test_cases.items():
         try:
-            logger.info(f"------ Start testcase: {test_case_id} -----------")
+            logger.info(f"------ Start testcase: {testcase_id} -----------")
             list_file_log_before_run = get_list_file_at_folder(testcase_data['log_path'])
+
+            testcase_list_hosts_file_path = f"{test_data_folder}/{host_file_name_temp.format(testcase_id=testcase_id)}"
+            list_hosts = get_list_hosts(testcase_list_hosts_file_path)
+            testcase_expected_content_file_path = (f"{test_data_folder}/"
+                                                   f"{message_file_name_temp.format(testcase_id=testcase_id)}")
             for host in list_hosts:
                 expected_stats = {
                     "total_request": testcase_data['expected_total_request'],
@@ -121,16 +148,16 @@ def main():
                     "not_response_percent": testcase_data['percent_no_response']
                 }
                 set_stats(host, expected_stats)
-                set_expected_file_content(host, expected_content_file)
+                set_expected_file_content(host, testcase_expected_content_file_path)
                 time.sleep(0.5)
-            summary_stats = get_summary_stats()
-            logger.warning(summary_stats)
+            summary_stats = get_summary_stats(list_hosts)
+            logger.debug(summary_stats)
 
             timeout_duration = 10
             command = (f"cd ./resource/hansol-app && ./httppostclient "
-                       f"--host {list_hosts_file} "
+                       f"--host {testcase_list_hosts_file_path} "
                        f"--request {testcase_data['expected_total_request']} "
-                       f"--input {expected_content_file} "
+                       f"--input {testcase_expected_content_file_path} "
                        f"--log {testcase_data['log_path']}")
             os.system(command)
             time.sleep(timeout_duration)
@@ -139,7 +166,7 @@ def main():
             testcase_data['result'] += verify_log(testcase_data, list_file_log_before_run)
 
             logger.info(f"Verify stats for test case.")
-            summary_stats = get_summary_stats()
+            summary_stats = get_summary_stats(list_hosts)
             logger.warning(summary_stats)
             testcase_data["actual_stats"] = summary_stats
             message_verify_total_rq = (
@@ -159,7 +186,7 @@ def main():
         except Exception as ex:
             logger.error(ex)
         finally:
-            logger.info(f"------ End testcase: {test_case_id} -----------")
+            logger.info(f"------ End testcase: {testcase_id} -----------")
 
 
 if __name__ == '__main__':

@@ -1,6 +1,11 @@
 import configparser
 import json
 import os
+import shutil
+import logging
+import zipfile
+
+logger = logging.getLogger(__name__)
 
 
 def read_file_content_as_bytes(file_path):
@@ -73,3 +78,40 @@ def get_list_file_at_folder(folder_path, extension: str = ".log"):
             if file.endswith(extension)
         ]
     return list_files_path
+
+
+def remove_folder_and_contents(folder_path):
+    """
+    Removes the specified folder and all its contents.
+
+    :param folder_path: Path to the folder to be removed.
+    """
+    if os.path.exists(folder_path):
+        try:
+            shutil.rmtree(folder_path)
+            logger.debug(f"Successfully removed folder and its contents: {folder_path}")
+        except PermissionError:
+            logger.error(f"Error: Permission denied to remove {folder_path}.")
+        except FileNotFoundError:
+            logger.error(f"Error: The folder {folder_path} does not exist.")
+        except Exception as e:
+            logger.error(f"An unexpected error occurred: {e}")
+    else:
+        logger.debug(f"The folder {folder_path} does not exist.")
+
+
+def extract_zip_file_to_folder(zip_path, extract_to):
+    """
+    Unzips the specified zip file to the given directory.
+
+    :param zip_path: Path to the zip file.
+    :param extract_to: Directory where the files should be extracted.
+    """
+    # Ensure the extraction directory exists
+    os.makedirs(extract_to, exist_ok=True)
+
+    # Open the zip file
+    with zipfile.ZipFile(zip_path, 'r') as zip_ref:
+        # Extract all contents into the directory
+        zip_ref.extractall(extract_to)
+        logger.debug(f"Extracted all files to {extract_to}")
