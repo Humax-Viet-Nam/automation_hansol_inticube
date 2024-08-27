@@ -9,7 +9,7 @@
   },
   "F2": {
     "expected_total_request": 15,
-    "log_path": "/home/hvn/Desktop/hansol-app-v1/log_f!@_file",
+    "log_path": ".",
     "max_size_log_file_mb": 500,
     "percent_no_response": 0,
     "percent_response_error": 0,
@@ -39,14 +39,6 @@
     "percent_response_error": 0,
 	"result":""
   },
-  "F6": {
-    "expected_total_request": 15,
-    "log_path": "/home/hvn/Desktop/hansol-app-v1/@!#",
-    "max_size_log_file_mb": 500,
-    "percent_no_response": 0,
-    "percent_response_error": 0,
-	"result":""
-  },
   "F7": {
     "expected_total_request": 15,
     "log_path": ".",
@@ -62,7 +54,7 @@
     "percent_no_response": 0,
     "percent_response_error": 0,
 	"result":""
-  },  
+  },
   "F9": {
     "expected_total_request": 15,
     "log_path": ".",
@@ -71,11 +63,27 @@
     "percent_response_error": 0,
 	"result":""
   }, 
-   "F26": {
+   "F28": {
     "expected_total_request": 10,
     "log_path": ".",
     "max_size_log_file_mb": 500,
     "percent_no_response": 100,
+    "percent_response_error": 0,
+	"result":""
+  },
+    "F29": {
+    "expected_total_request": 10,
+    "log_path": ".",
+    "max_size_log_file_mb": 500,
+    "percent_no_response": 0,
+    "percent_response_error": 100,
+	"result":""
+  },
+    "F30": {
+    "expected_total_request": 10,
+    "log_path": ".",
+    "max_size_log_file_mb": 500,
+    "percent_no_response": 50,
     "percent_response_error": 0,
 	"result":""
   } 
