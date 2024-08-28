@@ -5,4 +5,4 @@ Replace <your-server-host> with the hostname or IP address where your applicatio
 Replace <your-server-port> with the port number your application is using (e.g., 8080).
 
 For example, if your app is running on localhost and port 8080, you would go to:
-http://localhost:8080/api/doc
+http://localhost:8080/api/doc 
