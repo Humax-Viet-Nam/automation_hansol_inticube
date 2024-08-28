@@ -2,32 +2,46 @@
 FROM centos:8
 
 # Update the package list and install basic packages
-RUN dnf -y update && dnf -y install \
+RUN cd /etc/yum.repos.d/
+RUN sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-*
+RUN sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-*
+
+RUN yum -y update && yum -y install \
     curl \
     wget \
     vim \
     git \
     sudo \
     ca-certificates \
-    && dnf clean all
+    && yum clean all
 
 # Install Python and required development tools
-RUN dnf -y install \
-    python3 \
-    python3-pip \
+RUN yum -y install \
     make \
     gcc \
     openssl-devel \
     libffi-devel \
     python3-devel \
-    && dnf clean all
+    && yum clean all
+
+# Install python 3.8
+RUN yum -y install openssl-devel bzip2-devel libffi-devel xz-devel
+
+RUN wget https://www.python.org/ftp/python/3.10.2/Python-3.10.2.tgz -P /opt
+RUN tar xvf /opt/Python-3.10.2.tgz -C /opt && rm -rf /opt/Python-3.10.2.tgz
+RUN cd /opt/Python-3.10*/ && ./configure --enable-optimizations && make altinstall
+RUN pip3.10 install --upgrade pip
+
+# Install ssl
+RUN yum install openssl
 
 # Set the working directory
 WORKDIR /app
 
 # Install any needed packages specified in requirements.txt
 COPY requirements.txt /app/
-RUN pip3 install --no-cache-dir -r requirements.txt
+RUN pip3.10 install --no-cache-dir -r requirements.txt
+COPY . /app/
 
 # Set the default command to run on container start
 CMD ["bash", "-c", "tail -f /dev/null"]
