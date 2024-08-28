@@ -24,6 +24,8 @@ RUN apt-get update && apt-get install -y \
     libffi-dev \
     python3-dev
 
+RUN apt-get install -y cmake
+
 # Set the working directory
 WORKDIR /app
 
