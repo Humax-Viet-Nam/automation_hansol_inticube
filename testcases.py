@@ -159,6 +159,7 @@ def main():
                        f"--request {testcase_data['expected_total_request']} "
                        f"--input {testcase_expected_content_file_path} "
                        f"--log {testcase_data['log_path']}")
+            logger.debug(f"Execute command: {command}")
             os.system(command)
             time.sleep(timeout_duration)
 
