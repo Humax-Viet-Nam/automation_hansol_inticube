@@ -1,3 +1,4 @@
+import argparse
 import os
 import re
 import time
@@ -125,7 +126,7 @@ def validate_test_data():
         raise ValueError(f"Missing testdata: {', '.join(list_test_data_missing)}")
 
 
-def main():
+def main(env_test: str = 'centos'):
 
     remove_folder_and_contents(test_data_folder)
     extract_zip_file_to_folder(test_data_zip_file, test_data_folder)
@@ -154,7 +155,7 @@ def main():
             logger.debug(summary_stats)
 
             timeout_duration = 10
-            command = (f"cd ./resource/hansol-app && ./httppostclient "
+            command = (f"cd ./resource/hansol-app-{env_test} && ./httppostclient "
                        f"--host {testcase_list_hosts_file_path} "
                        f"--request {testcase_data['expected_total_request']} "
                        f"--input {testcase_expected_content_file_path} "
@@ -191,4 +192,7 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    parser = argparse.ArgumentParser(description="Runner usage is: python run.py [Options]")
+    parser.add_argument('-e', '--env', type=str, help='choice centos or ubuntu env')
+    args = parser.parse_args()
+    main(args.env)
