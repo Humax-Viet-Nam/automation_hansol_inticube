@@ -3,8 +3,8 @@ import os
 import re
 import time
 from helper.helper import read_json_file, read_file_as_text, get_list_file_at_folder, write_json_to_file, \
-    extract_zip_file_to_folder, remove_folder_and_contents
-from helper.path_manage import testcases_file, test_data_folder, test_data_zip_file
+    extract_zip_file_to_folder, remove_folder_and_contents, copy_file_to_folder
+from helper.path_manage import testcases_file, test_data_folder, test_data_zip_file, resource_folder
 from test.hansol_server_api import set_stats, set_expected_file_content, get_stats, get_log
 import logging
 logging.basicConfig(level=logging.DEBUG)
@@ -131,17 +131,24 @@ def main(env_test: str = 'centos'):
     remove_folder_and_contents(test_data_folder)
     extract_zip_file_to_folder(test_data_zip_file, test_data_folder)
     validate_test_data()
-    list_test_cases = read_json_file(testcases_file)
 
+    list_test_cases = read_json_file(testcases_file)
+    list_test_result = {}
     for testcase_id, testcase_data in list_test_cases.items():
         try:
+            test_result = {}
             logger.info(f"------ Start testcase: {testcase_id} -----------")
             list_file_log_before_run = get_list_file_at_folder(testcase_data['log_path'])
 
-            testcase_list_hosts_file_path = f"{test_data_folder}/{host_file_name_temp.format(testcase_id=testcase_id)}"
-            list_hosts = get_list_hosts(testcase_list_hosts_file_path)
-            testcase_expected_content_file_path = (f"{test_data_folder}/"
-                                                   f"{message_file_name_temp.format(testcase_id=testcase_id)}")
+            origin_hosts_file_path = f"{test_data_folder}/{host_file_name_temp.format(testcase_id=testcase_id)}"
+            hosts_file_path = os.path.abspath(f"./resource/hansol-app-{env_test}/{testcase_data['host_path']}")
+            copy_file_to_folder(origin_hosts_file_path, hosts_file_path)
+
+            origin_message_file_path = f"{test_data_folder}/{message_file_name_temp.format(testcase_id=testcase_id)}"
+            message_file_path = os.path.abspath(f"./resource/hansol-app-{env_test}/{testcase_data['message_path']}")
+            copy_file_to_folder(origin_message_file_path, message_file_path)
+
+            list_hosts = get_list_hosts(hosts_file_path)
             for host in list_hosts:
                 expected_stats = {
                     "total_request": testcase_data['expected_total_request'],
@@ -149,28 +156,28 @@ def main(env_test: str = 'centos'):
                     "not_response_percent": testcase_data['percent_no_response']
                 }
                 set_stats(host, expected_stats)
-                set_expected_file_content(host, testcase_expected_content_file_path)
+                set_expected_file_content(host, message_file_path)
                 time.sleep(0.5)
             summary_stats = get_summary_stats(list_hosts)
             logger.debug(summary_stats)
 
             timeout_duration = 10
             command = (f"cd ./resource/hansol-app-{env_test} && ./httppostclient "
-                       f"--host {testcase_list_hosts_file_path} "
+                       f"--host {hosts_file_path} "
                        f"--request {testcase_data['expected_total_request']} "
-                       f"--input {testcase_expected_content_file_path} "
+                       f"--input {message_file_path} "
                        f"--log {testcase_data['log_path']}")
             logger.debug(f"Execute command: {command}")
             os.system(command)
             time.sleep(timeout_duration)
 
             logger.info(f"Verify log for test case.")
-            testcase_data['result'] += verify_log(testcase_data, list_file_log_before_run)
+            test_result['result'] += verify_log(testcase_data, list_file_log_before_run)
 
             logger.info(f"Verify stats for test case.")
             summary_stats = get_summary_stats(list_hosts)
             logger.warning(summary_stats)
-            testcase_data["actual_stats"] = summary_stats
+            test_result["actual_stats"] = summary_stats
             message_verify_total_rq = (
                 f"[{BOOL_TO_STAGE[summary_stats['total_request_received'] == testcase_data['expected_total_request']]}]"
                 f" Receive total {testcase_data['expected_total_request']} requests."
@@ -182,9 +189,11 @@ def main(env_test: str = 'centos'):
             )
             logger.info(message_verify_total_rq)
             logger.info(message_verify_content)
-            testcase_data['result'] += f"\n{message_verify_total_rq}"
-            testcase_data['result'] += f"\n{message_verify_content}"
-            write_json_to_file(list_test_cases, testcases_file)
+            test_result['result'] += f"\n{message_verify_total_rq}"
+            test_result['result'] += f"\n{message_verify_content}"
+            list_test_result.update({testcase_id: test_result})
+            test_result_path = os.path.join(resource_folder, "result-{env_test}.json")
+            write_json_to_file(list_test_result, test_result_path)
         except Exception as ex:
             logger.error(ex)
         finally:

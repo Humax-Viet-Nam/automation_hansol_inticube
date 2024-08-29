@@ -2,6 +2,8 @@
   "F1": {
     "expected_total_request": 1,
     "log_path": ".",
+    "message_path": ".",
+    "host_path": ".",
     "max_size_log_file_mb": 500,
     "percent_no_response": 0,
     "percent_response_error": 0,

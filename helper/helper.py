@@ -115,3 +115,19 @@ def extract_zip_file_to_folder(zip_path, extract_to):
         # Extract all contents into the directory
         zip_ref.extractall(extract_to)
         logger.debug(f"Extracted all files to {extract_to}")
+
+
+def copy_file_to_folder(file_path, destination_folder):
+    # Create the destination folder if it doesn't exist
+    if not os.path.exists(destination_folder):
+        os.makedirs(destination_folder)
+
+    # Get the file name from the file path
+    file_name = os.path.basename(file_path)
+
+    # Construct the destination path
+    destination_path = os.path.join(destination_folder, file_name)
+
+    # Copy the file to the destination folder
+    shutil.copyfile(file_path, destination_path)
+    logger.debug(f"Copied {file_path} to {destination_path}")
