@@ -2,8 +2,8 @@
   "F1": {
     "expected_total_request": 1,
     "log_path": ".",
-    "message_path": ".",
-    "host_path": ".",
+	"host_path": "../Data",
+	"message_path": "../Data",
     "max_size_log_file_mb": 500,
     "percent_no_response": 0,
     "percent_response_error": 0,
@@ -11,7 +11,9 @@
   },
   "F2": {
     "expected_total_request": 15,
-    "log_path": ".",
+    "log_path": "./l@g%",
+	"host_path": "./Data1",
+	"message_path": "./Data1",
     "max_size_log_file_mb": 500,
     "percent_no_response": 0,
     "percent_response_error": 0,
@@ -19,7 +21,9 @@
   },
   "F3": {
     "expected_total_request": 20,
-    "log_path": "/home/hvn/Desktop/hansol-app-v1/hansol-app-v1",
+    "log_path": ".",
+	"host_path": ".",
+	"message_path": ".",
     "max_size_log_file_mb": 500,
     "percent_no_response": 0,
     "percent_response_error": 0,
@@ -27,7 +31,9 @@
   },
   "F4": {
     "expected_total_request": 200,
-    "log_path": "/home/hvn/Desktop/hansol-app-v1/hansol-app-v1",
+    "log_path": "./log123",
+	"host_path": ".",
+	"message_path": ".",
     "max_size_log_file_mb": 500,
     "percent_no_response": 0,
     "percent_response_error": 0,
@@ -35,7 +41,9 @@
   },
   "F5": {
     "expected_total_request": 15,
-    "log_path": "/home/hvn/Desktop",
+    "log_path": "../log123",
+	"host_path": ".",
+	"message_path": ".",
     "max_size_log_file_mb": 500,
     "percent_no_response": 0,
     "percent_response_error": 0,
@@ -44,6 +52,8 @@
   "F7": {
     "expected_total_request": 15,
     "log_path": ".",
+	"host_path": ".",
+	"message_path": ".",
     "max_size_log_file_mb": 500,
     "percent_no_response": 0,
     "percent_response_error": 0,
@@ -52,6 +62,8 @@
   "F8": {
     "expected_total_request": 15,
     "log_path": ".",
+	"host_path": ".",
+	"message_path": ".",
     "max_size_log_file_mb": 500,
     "percent_no_response": 0,
     "percent_response_error": 0,
@@ -60,6 +72,8 @@
   "F9": {
     "expected_total_request": 15,
     "log_path": ".",
+	"host_path": ".",
+	"message_path": ".",
     "max_size_log_file_mb": 500,
     "percent_no_response": 0,
     "percent_response_error": 0,
@@ -68,6 +82,8 @@
    "F28": {
     "expected_total_request": 10,
     "log_path": ".",
+	"host_path": ".",
+	"message_path": ".",
     "max_size_log_file_mb": 500,
     "percent_no_response": 100,
     "percent_response_error": 0,
@@ -84,9 +100,31 @@
     "F30": {
     "expected_total_request": 10,
     "log_path": ".",
+	"host_path": ".",
+	"message_path": ".",
     "max_size_log_file_mb": 500,
     "percent_no_response": 50,
     "percent_response_error": 0,
 	"result":""
-  } 
+  },
+    "($+@ 좋습니다_F6": {
+    "expected_total_request": 950,
+    "log_path": ".",
+	"host_path": ".",
+	"message_path": ".",
+    "max_size_log_file_mb": 500,
+    "percent_no_response": 0,
+    "percent_response_error": 0,
+	"result":""
+  },
+    "F31": {
+    "expected_total_request": 12,
+    "log_path": "./($+@%!",
+	"host_path": ".",
+	"message_path": ".",
+    "max_size_log_file_mb": 500,
+    "percent_no_response": 50,
+    "percent_response_error": 0,
+	"result":""
+  }
 }
