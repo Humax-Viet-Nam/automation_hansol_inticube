@@ -132,3 +132,27 @@ def copy_file_to_folder(file_path, destination_folder):
     shutil.copyfile(file_path, destination_path)
     logger.debug(f"Copied {file_path} to {destination_path}")
     return destination_path
+
+
+def check_none_in_list(input_list):
+    """
+    Check if there are any None values in the list.
+    Returns True if there is at least one None, otherwise False.
+    """
+    return None in input_list
+
+
+def get_duplicates_in_list(input_list):
+    """
+    Get a list of duplicate elements in the input list.
+    Returns a list of duplicates.
+    """
+    seen = set()
+    duplicates = set()
+    for item in input_list:
+        if item in seen:
+            duplicates.add(item)
+        else:
+            seen.add(item)
+
+    return list(duplicates)

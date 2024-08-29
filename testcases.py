@@ -3,7 +3,8 @@ import os
 import re
 import time
 from helper.helper import read_json_file, read_file_as_text, get_list_file_at_folder, write_json_to_file, \
-    extract_zip_file_to_folder, remove_folder_and_contents, copy_file_to_folder
+    extract_zip_file_to_folder, remove_folder_and_contents, copy_file_to_folder, check_none_in_list, \
+    get_duplicates_in_list
 from helper.path_manage import testcases_file, test_data_folder, test_data_zip_file, resource_folder
 from test.hansol_server_api import set_stats, set_expected_file_content, get_stats, get_log
 import logging
@@ -25,7 +26,7 @@ def get_list_hosts(hosts_file_path) -> [str]:
     return list_host
 
 
-def get_log_blocks_not_follow_format(log_content):
+def get_log_blocks_info(log_content):
     log_pattern = re.compile(
         r"seq: (\d+) {2}- {2}Send Time: (\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}), "
         r"Receive Time(?: \(Timeout - \d+s\))?: (\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}|NULL \(Timeout\)), "
@@ -38,19 +39,34 @@ def get_log_blocks_not_follow_format(log_content):
     log_blocks = re.split(r'(seq: \d+ {2}- {2}Send Time:)', log_content.strip())
     list_block_not_follow_format = []
     # Iterate through each block and validate against the pattern
+    list_block_id = []
     for i in range(1, len(log_blocks), 2):
         block = log_blocks[i] + log_blocks[i + 1]
         block = block.strip()
-
+        list_block_id.append(get_seq_id(block))
         # Check if the block matches the expected pattern
         match = log_pattern.match(block)
         if not match:
             list_block_not_follow_format.append(log_blocks[i])
-    return list_block_not_follow_format
+    return {
+        "list_block_not_follow_format": list_block_not_follow_format,
+        "list_block_id": list_block_id
+    }
 
 
-def verify_log(testcase_data, list_file_log_before_run):
-    list_file_logs = get_list_file_at_folder(testcase_data['log_path'])
+def get_seq_id(log_line):
+    # Use regular expression to find the sequence ID
+    match = re.search(r'seq:\s*(\d+) {2}- {2}', log_line)
+
+    if match:
+        # Extract and return the sequence ID
+        return match.group(1)
+    else:
+        return None
+
+
+def verify_log(testcase_data, list_file_log_before_run, log_folder_path):
+    list_file_logs = get_list_file_at_folder(log_folder_path)
     list_new_log_file = [log_file for log_file in list_file_logs if log_file not in list_file_log_before_run]
     log_result = ""
     for log_file in list_new_log_file:
@@ -65,15 +81,20 @@ def verify_log(testcase_data, list_file_log_before_run):
         logger.info(message_verify_logfile_size)
         log_result += message_verify_logfile_size
 
-        list_block_not_follow_format = get_log_blocks_not_follow_format(read_file_as_text(log_file))
-        if len(list_block_not_follow_format) == 0:
+        list_block_info = get_log_blocks_info(read_file_as_text(log_file))
+        if len(list_block_info["list_block_not_follow_format"]) == 0:
             message = f"    [{BOOL_TO_STAGE[True]}] All log entry at : {log_file}  follow format"
             log_result += f"\n{message}"
         else:
-            for block_name in list_block_not_follow_format:
+            for block_name in list_block_info["list_block_not_follow_format"]:
                 message = f"    [{BOOL_TO_STAGE[False]}] Log entry at : {block_name}  follow format"
                 logger.info(message)
                 log_result += f"\n{message}"
+        log_result += (f"[{BOOL_TO_STAGE[not check_none_in_list(list_block_info['list_block_id'])]}] ."
+                       f"Not include seq none.")
+        list_duplicates = get_duplicates_in_list(list_block_info['list_block_id'])
+        log_result += (f"[{BOOL_TO_STAGE[len(list_duplicates) == 0]}] Not include duplicate seq ."
+                       f"List duplicate is: {list_duplicates}")
 
     return log_result
 
@@ -138,7 +159,8 @@ def main(env_test: str = 'centos'):
         try:
             test_result = {"result": ""}
             logger.info(f"------ Start testcase: {testcase_id} -----------")
-            list_file_log_before_run = get_list_file_at_folder(testcase_data['log_path'])
+            log_folder_path = f"./resource/hansol-app-{env_test}/{testcase_data['log_path']}"
+            list_file_log_before_run = get_list_file_at_folder(log_folder_path)
 
             origin_hosts_file_path = f"{test_data_folder}/{host_file_name_temp.format(testcase_id=testcase_id)}"
             hosts_file_folder_path = os.path.abspath(f"./resource/hansol-app-{env_test}/{testcase_data['host_path']}")
@@ -172,7 +194,7 @@ def main(env_test: str = 'centos'):
             time.sleep(timeout_duration)
 
             logger.info(f"Verify log for test case.")
-            test_result['result'] += verify_log(testcase_data, list_file_log_before_run)
+            test_result['result'] += verify_log(testcase_data, list_file_log_before_run, log_folder_path)
 
             logger.info(f"Verify stats for test case.")
             summary_stats = get_summary_stats(list_hosts)
