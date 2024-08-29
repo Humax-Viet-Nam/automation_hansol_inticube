@@ -136,7 +136,7 @@ def main(env_test: str = 'centos'):
     list_test_result = {}
     for testcase_id, testcase_data in list_test_cases.items():
         try:
-            test_result = {}
+            test_result = {"result": ""}
             logger.info(f"------ Start testcase: {testcase_id} -----------")
             list_file_log_before_run = get_list_file_at_folder(testcase_data['log_path'])
 
@@ -177,7 +177,7 @@ def main(env_test: str = 'centos'):
             logger.info(f"Verify stats for test case.")
             summary_stats = get_summary_stats(list_hosts)
             logger.warning(summary_stats)
-            test_result["actual_stats"] = summary_stats
+            test_result.update({"actual_stats": summary_stats})
             message_verify_total_rq = (
                 f"[{BOOL_TO_STAGE[summary_stats['total_request_received'] == testcase_data['expected_total_request']]}]"
                 f" Receive total {testcase_data['expected_total_request']} requests."
