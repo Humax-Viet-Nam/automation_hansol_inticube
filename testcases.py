@@ -69,6 +69,7 @@ def verify_log(testcase_data, list_file_log_before_run, log_folder_path):
     list_file_logs = get_list_file_at_folder(log_folder_path)
     list_new_log_file = [log_file for log_file in list_file_logs if log_file not in list_file_log_before_run]
     log_result = ""
+    count_seq = 0
     for log_file in list_new_log_file:
         log_result += f"\nVerify file log: {log_file}"
         message_verify_logfile_name = (f"[{BOOL_TO_STAGE[verify_logfile_name(log_file)]}] "
@@ -82,6 +83,7 @@ def verify_log(testcase_data, list_file_log_before_run, log_folder_path):
         log_result += message_verify_logfile_size
 
         list_block_info = get_log_blocks_info(read_file_as_text(log_file))
+        count_seq = count_seq + len(list_block_info['list_block_id'])
         if len(list_block_info["list_block_not_follow_format"]) == 0:
             message = f"    [{BOOL_TO_STAGE[True]}] All log entry at : {log_file}  follow format"
             log_result += f"\n{message}"
@@ -95,7 +97,8 @@ def verify_log(testcase_data, list_file_log_before_run, log_folder_path):
         list_duplicates = get_duplicates_in_list(list_block_info['list_block_id'])
         log_result += (f"[{BOOL_TO_STAGE[len(list_duplicates) == 0]}] Not include duplicate seq ."
                        f"List duplicate is: {list_duplicates}")
-
+    log_result += (f"[{BOOL_TO_STAGE[count_seq==testcase_data['expected_total_request']]}] ."
+                   f"Total seq in log is {testcase_data['expected_total_request']}.")
     return log_result
 
 
