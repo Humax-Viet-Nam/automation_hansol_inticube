@@ -163,10 +163,10 @@ def main(env_test: str = 'centos'):
 
             timeout_duration = 10
             command = (f"cd ./resource/hansol-app-{env_test} && ./httppostclient "
-                       f"--host {hosts_file_path} "
+                       f"--host \"{hosts_file_path}\" "
                        f"--request {testcase_data['expected_total_request']} "
-                       f"--input {message_file_path} "
-                       f"--log {testcase_data['log_path']}")
+                       f"--input \"{message_file_path}\" "
+                       f"--log \"{testcase_data['log_path']}\"")
             logger.debug(f"Execute command: {command}")
             os.system(command)
             time.sleep(timeout_duration)
