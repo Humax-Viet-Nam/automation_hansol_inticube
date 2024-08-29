@@ -141,12 +141,12 @@ def main(env_test: str = 'centos'):
             list_file_log_before_run = get_list_file_at_folder(testcase_data['log_path'])
 
             origin_hosts_file_path = f"{test_data_folder}/{host_file_name_temp.format(testcase_id=testcase_id)}"
-            hosts_file_path = os.path.abspath(f"./resource/hansol-app-{env_test}/{testcase_data['host_path']}")
-            copy_file_to_folder(origin_hosts_file_path, hosts_file_path)
+            hosts_file_folder_path = os.path.abspath(f"./resource/hansol-app-{env_test}/{testcase_data['host_path']}")
+            hosts_file_path = copy_file_to_folder(origin_hosts_file_path, hosts_file_folder_path)
 
             origin_message_file_path = f"{test_data_folder}/{message_file_name_temp.format(testcase_id=testcase_id)}"
-            message_file_path = os.path.abspath(f"./resource/hansol-app-{env_test}/{testcase_data['message_path']}")
-            copy_file_to_folder(origin_message_file_path, message_file_path)
+            message_file_folder_path = os.path.abspath(f"./resource/hansol-app-{env_test}/{testcase_data['message_path']}")
+            message_file_path = copy_file_to_folder(origin_message_file_path, message_file_folder_path)
 
             list_hosts = get_list_hosts(hosts_file_path)
             for host in list_hosts:
@@ -202,6 +202,6 @@ def main(env_test: str = 'centos'):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Runner usage is: python run.py [Options]")
-    parser.add_argument('-e', '--env', type=str, help='choice centos or ubuntu env')
+    parser.add_argument('-e', '--env', type=str, help='choice centos or ubuntu env', default='centos')
     args = parser.parse_args()
     main(args.env)

@@ -131,3 +131,4 @@ def copy_file_to_folder(file_path, destination_folder):
     # Copy the file to the destination folder
     shutil.copyfile(file_path, destination_path)
     logger.debug(f"Copied {file_path} to {destination_path}")
+    return destination_path
