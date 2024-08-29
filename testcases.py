@@ -192,7 +192,7 @@ def main(env_test: str = 'centos'):
             test_result['result'] += f"\n{message_verify_total_rq}"
             test_result['result'] += f"\n{message_verify_content}"
             list_test_result.update({testcase_id: test_result})
-            test_result_path = os.path.join(resource_folder, "result-{env_test}.json")
+            test_result_path = os.path.join(resource_folder, f"result-{env_test}.json")
             write_json_to_file(list_test_result, test_result_path)
         except Exception as ex:
             logger.error(ex)
