@@ -36,6 +36,11 @@ RUN pip3.10 install --upgrade pip
 RUN yum group install -y "Development Tools"
 RUN yum install -y openssl cmake gcc
 
+# Install lib cmocka for unit test
+RUN wget https://cmocka.org/files/1.1/cmocka-1.1.7.tar.xz -P /opt
+RUN tar xvf /opt/cmocka-1.1.7.tar.xz -C /opt && rm -rf /opt/cmocka-1.1.7.tar.xz
+RUN cd /opt/cmocka-1.1*/ && mkdir build && cd build && cmake .. &&  make && make install
+
 # Set the working directory
 WORKDIR /app
 
