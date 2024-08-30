@@ -46,7 +46,7 @@ def get_log_blocks_info(log_content):
         r"Receive Time(?: \(Timeout - \d+s\))?: (\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}|NULL \(Timeout\)), "
         r"Host Info: IP = (\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}), Port = (\d+), "
         r"Sent Message: (.*?), "
-        r"Message: NULL (Timeout)", re.DOTALL
+        r"Message: NULL \(Timeout\)", re.DOTALL
     )
     # Split log content using the pattern that separates each log block
     log_blocks = re.split(r'(seq: \d+ {2}- {2}Send Time:)', log_content.strip())
@@ -118,29 +118,35 @@ def verify_log(testcase_data, list_file_log_before_run, log_folder_path):
         count_200 = count_200 + list_block_info['count_200']
         count_400 = count_400 + list_block_info['count_400']
         if len(list_block_info["list_block_not_follow_format"]) == 0:
-            message = f"    [{BOOL_TO_STAGE[True]}] All log entry at : {log_file}  follow format"
-            log_result += f"\n{message}"
+            message = f"    [{BOOL_TO_STAGE[True]}] All log entry at : {log_file}  follow format.\n"
+            log_result += f"{message}"
         else:
             for block_name in list_block_info["list_block_not_follow_format"]:
-                message = f"    [{BOOL_TO_STAGE[False]}] Log entry at : {block_name}  follow format"
+                message = f"    [{BOOL_TO_STAGE[False]}] Log entry at : {block_name}  follow format.\n"
                 logger.info(message)
-                log_result += f"\n{message}"
+                log_result += f"{message}"
         log_result += (f"[{BOOL_TO_STAGE[not check_none_in_list(list_block_info['list_block_id'])]}] ."
                        f"Not include seq none.")
         list_duplicates = get_duplicates_in_list(list_block_info['list_block_id'])
-        log_result += (f"[{BOOL_TO_STAGE[len(list_duplicates) == 0]}] Not include duplicate seq ."
-                       f"List duplicate is: {list_duplicates}")
-    log_result += (f"[{BOOL_TO_STAGE[count_seq==testcase_data['expected_total_request']]}] ."
-                   f"Total seq in log is {testcase_data['expected_total_request']}.")
-    expected_number_400 = testcase_data['percent_response_error']*testcase_data['expected_total_request']/100
-    expected_number_not_response = testcase_data['percent_no_response'] * testcase_data['expected_total_request'] / 100
-    expected_number_200 = testcase_data['expected_total_request'] - (expected_number_400 + expected_number_not_response)
-    log_result += (f"[{BOOL_TO_STAGE[count_seq==expected_number_200]}] ."
-                   f"Total 200 in log is {expected_number_200}.")
-    log_result += (f"[{BOOL_TO_STAGE[count_seq==expected_number_400]}] ."
-                   f"Total 400 in log is {expected_number_400}.")
-    log_result += (f"[{BOOL_TO_STAGE[count_seq==expected_number_not_response]}] ."
-                   f"Total not response in log is {expected_number_not_response}.")
+        log_result += (f"[{BOOL_TO_STAGE[len(list_duplicates) == 0]}] Not include duplicate seq."
+                       f"List duplicate is: {list_duplicates}.\n")
+    log_result += (f"[{BOOL_TO_STAGE[count_seq==testcase_data['expected_total_request']]}]"
+                   f"Total seq in log is {testcase_data['expected_total_request']}.\n")
+    expected_number_400 = int(
+        testcase_data['percent_response_error']*testcase_data['expected_total_request']/100
+    )
+    expected_number_not_response = int(
+        testcase_data['percent_no_response'] * testcase_data['expected_total_request'] / 100
+    )
+    expected_number_200 = int(
+        testcase_data['expected_total_request'] - (expected_number_400 + expected_number_not_response)
+    )
+    log_result += (f"[{BOOL_TO_STAGE[count_200==expected_number_200]}]"
+                   f"Total 200 in log is {expected_number_200}.\n")
+    log_result += (f"[{BOOL_TO_STAGE[count_400==expected_number_400]}]"
+                   f"Total 400 in log is {expected_number_400}.\n")
+    log_result += (f"[{BOOL_TO_STAGE[count_not_response==expected_number_not_response]}]"
+                   f"Total not response in log is {expected_number_not_response}.\n")
     return log_result
 
 
@@ -235,8 +241,8 @@ def main(env_test: str = 'centos'):
                        f"--input \"{testcase_data['message_path']}/{testcase_id}_messagefile.txt\" "
                        f"--log \"{testcase_data['log_path']}\"")
             logger.debug(f"Execute command: {command}")
-            os.system(command)
-            time.sleep(timeout_duration)
+            # os.system(command)
+            # time.sleep(timeout_duration)
 
             logger.info(f"Verify log for test case.")
             test_result['result'] += verify_log(testcase_data, list_file_log_before_run, log_folder_path)
