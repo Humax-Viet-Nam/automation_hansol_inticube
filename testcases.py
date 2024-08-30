@@ -27,30 +27,57 @@ def get_list_hosts(hosts_file_path) -> [str]:
 
 
 def get_log_blocks_info(log_content):
-    log_pattern = re.compile(
+    log_pattern_200 = re.compile(
         r"seq: (\d+) {2}- {2}Send Time: (\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}), "
         r"Receive Time(?: \(Timeout - \d+s\))?: (\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}|NULL \(Timeout\)), "
         r"Host Info: IP = (\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}), Port = (\d+), "
         r"Sent Message: (.*?), "
-        r"Received Message: (.*)", re.DOTALL
+        r"Received Message: HTTP/1.1 200(.*)", re.DOTALL
     )
-
+    log_pattern_400 = re.compile(
+        r"seq: (\d+) {2}- {2}Send Time: (\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}), "
+        r"Receive Time(?: \(Timeout - \d+s\))?: (\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}|NULL \(Timeout\)), "
+        r"Host Info: IP = (\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}), Port = (\d+), "
+        r"Sent Message: (.*?), "
+        r"Received Message: HTTP/1.1 400(.*)", re.DOTALL
+    )
+    log_pattern_not_response = re.compile(
+        r"seq: (\d+) {2}- {2}Send Time: (\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}), "
+        r"Receive Time(?: \(Timeout - \d+s\))?: (\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}|NULL \(Timeout\)), "
+        r"Host Info: IP = (\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}), Port = (\d+), "
+        r"Sent Message: (.*?), "
+        r"Message: NULL (Timeout)", re.DOTALL
+    )
     # Split log content using the pattern that separates each log block
     log_blocks = re.split(r'(seq: \d+ {2}- {2}Send Time:)', log_content.strip())
     list_block_not_follow_format = []
     # Iterate through each block and validate against the pattern
     list_block_id = []
+    count_not_response = 0
+    count_200 = 0
+    count_400 = 0
     for i in range(1, len(log_blocks), 2):
         block = log_blocks[i] + log_blocks[i + 1]
         block = block.strip()
         list_block_id.append(get_seq_id(block))
         # Check if the block matches the expected pattern
-        match = log_pattern.match(block)
-        if not match:
+        match_200 = log_pattern_200.match(block)
+        match_400 = log_pattern_400.match(block)
+        match_not_response = log_pattern_not_response.match(block)
+        if match_not_response:
+            count_not_response += 1
+        elif match_200:
+            count_200 += 1
+        elif match_400:
+            count_400 += 1
+        else:
             list_block_not_follow_format.append(log_blocks[i])
     return {
         "list_block_not_follow_format": list_block_not_follow_format,
-        "list_block_id": list_block_id
+        "list_block_id": list_block_id,
+        "count_not_response": count_not_response,
+        "count_200": count_200,
+        "count_400": count_400,
     }
 
 
@@ -70,6 +97,9 @@ def verify_log(testcase_data, list_file_log_before_run, log_folder_path):
     list_new_log_file = [log_file for log_file in list_file_logs if log_file not in list_file_log_before_run]
     log_result = ""
     count_seq = 0
+    count_not_response = 0
+    count_200 = 0
+    count_400 = 0
     for log_file in list_new_log_file:
         log_result += f"\nVerify file log: {log_file}"
         message_verify_logfile_name = (f"[{BOOL_TO_STAGE[verify_logfile_name(log_file)]}] "
@@ -84,6 +114,9 @@ def verify_log(testcase_data, list_file_log_before_run, log_folder_path):
 
         list_block_info = get_log_blocks_info(read_file_as_text(log_file))
         count_seq = count_seq + len(list_block_info['list_block_id'])
+        count_not_response = count_not_response + list_block_info['count_not_response']
+        count_200 = count_200 + list_block_info['count_200']
+        count_400 = count_400 + list_block_info['count_400']
         if len(list_block_info["list_block_not_follow_format"]) == 0:
             message = f"    [{BOOL_TO_STAGE[True]}] All log entry at : {log_file}  follow format"
             log_result += f"\n{message}"
@@ -99,6 +132,15 @@ def verify_log(testcase_data, list_file_log_before_run, log_folder_path):
                        f"List duplicate is: {list_duplicates}")
     log_result += (f"[{BOOL_TO_STAGE[count_seq==testcase_data['expected_total_request']]}] ."
                    f"Total seq in log is {testcase_data['expected_total_request']}.")
+    expected_number_400 = testcase_data['percent_response_error']*testcase_data['expected_total_request']/100
+    expected_number_not_response = testcase_data['percent_no_response'] * testcase_data['expected_total_request'] / 100
+    expected_number_200 = testcase_data['expected_total_request'] - (expected_number_400 + expected_number_not_response)
+    log_result += (f"[{BOOL_TO_STAGE[count_seq==expected_number_200]}] ."
+                   f"Total 200 in log is {expected_number_200}.")
+    log_result += (f"[{BOOL_TO_STAGE[count_seq==expected_number_400]}] ."
+                   f"Total 400 in log is {expected_number_400}.")
+    log_result += (f"[{BOOL_TO_STAGE[count_seq==expected_number_not_response]}] ."
+                   f"Total not response in log is {expected_number_not_response}.")
     return log_result
 
 
