@@ -2,8 +2,8 @@
   "F1": {
     "expected_total_request": 1,
     "log_path": ".",
-	"host_path": "../Data",
-	"message_path": "../Data",
+	"host_path": ".",
+	"message_path": ".",
     "max_size_log_file_mb": 500,
     "percent_no_response": 0,
     "percent_response_error": 0,
@@ -12,8 +12,8 @@
   "F2": {
     "expected_total_request": 15,
     "log_path": "./l@g%",
-	"host_path": "./Data1",
-	"message_path": "./Data1",
+	"host_path": "./Data",
+	"message_path": "./Data",
     "max_size_log_file_mb": 500,
     "percent_no_response": 0,
     "percent_response_error": 0,
@@ -21,7 +21,7 @@
   },
   "F3": {
     "expected_total_request": 20,
-    "log_path": ".",
+    "log_path": "./Data",
 	"host_path": ".",
 	"message_path": ".",
     "max_size_log_file_mb": 500,
@@ -29,7 +29,7 @@
     "percent_response_error": 0,
 	"result":""
   },
-  "F4": {
+  "F4보자에게": {
     "expected_total_request": 200,
     "log_path": "./log123",
 	"host_path": ".",
@@ -92,6 +92,8 @@
     "F29": {
     "expected_total_request": 10,
     "log_path": ".",
+	"host_path": ".",
+	"message_path": ".",
     "max_size_log_file_mb": 500,
     "percent_no_response": 0,
     "percent_response_error": 100,
@@ -107,7 +109,7 @@
     "percent_response_error": 0,
 	"result":""
   },
-    "($+@ 좋습니다_F6": {
+    "($+@% F6": {
     "expected_total_request": 950,
     "log_path": ".",
 	"host_path": ".",
@@ -119,11 +121,11 @@
   },
     "F31": {
     "expected_total_request": 12,
-    "log_path": "./($+@%!",
-	"host_path": ".",
-	"message_path": ".",
+    "log_path": "./($+@%!보자에게",
+	"host_path": "../Data",
+	"message_path": "../Data",
     "max_size_log_file_mb": 500,
-    "percent_no_response": 50,
+    "percent_no_response": 0,
     "percent_response_error": 0,
 	"result":""
   }
