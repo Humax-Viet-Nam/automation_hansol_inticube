@@ -241,8 +241,8 @@ def main(env_test: str = 'centos'):
                        f"--input \"{testcase_data['message_path']}/{testcase_id}_messagefile.txt\" "
                        f"--log \"{testcase_data['log_path']}\"")
             logger.debug(f"Execute command: {command}")
-            # os.system(command)
-            # time.sleep(timeout_duration)
+            os.system(command)
+            time.sleep(timeout_duration)
 
             logger.info(f"Verify log for test case.")
             test_result['result'] += verify_log(testcase_data, list_file_log_before_run, log_folder_path)
